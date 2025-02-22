@@ -40,6 +40,33 @@ public class LinkedList {
         return false;
     }
 
+    public static void deleteTheHead(Node head) {
+        int headValue = 0;
+        if (head == null) {
+            System.out.println("The LINKED LIST IS NULL - NO head");
+        } else {
+            headValue = head.data;
+            Node temp = head.next;
+            head = temp;
+            // Traverse here only
+            while (temp != null) {
+                System.out.println(temp.data + " ");
+                temp = temp.next;
+            }
+        }
+    }
+
+    public static Node deleteTheTail(Node head) {
+        if (head == null || head.next == null)
+            return head;
+        Node temp = head;
+        while (temp.next.next != null) {
+            temp = temp.next;
+        }
+        temp.next = null;
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 122, 4, 6, 8, 90, 87 };
         Node head = convertArrToLinkedList(arr);
@@ -54,6 +81,16 @@ public class LinkedList {
 
         boolean isAvailable = searchElementInLL(head, 80);
         System.out.println(isAvailable);
+
+        // delete the head of the LINKEDLIST
+        deleteTheHead(head);
+        Node newLL = deleteTheTail(head);
+        Node newTemp = head;
+        while (newTemp != null) {
+            System.out.print("\t" + "" + newTemp.data + "  ");
+            newTemp = newTemp.next;
+
+        }
 
     }
 }
